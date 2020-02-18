@@ -1,0 +1,7 @@
+.DS_Store
+.idea
+/out/
+*.mips
+test.java
+*.mips.swp
+mars.jar
