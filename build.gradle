@@ -23,3 +23,12 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
+
+
+task copyJar(type: Copy) {
+    from jar
+    into('build')
+    rename {String fileName -> "minijava.jar"}
+}
+
+task release(type: Copy, dependsOn: [build, copyJar])
