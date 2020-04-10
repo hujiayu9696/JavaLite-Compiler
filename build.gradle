@@ -1,0 +1,25 @@
+apply plugin: 'java'
+
+version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile name: 'vapor-parser'
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "minijava"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
